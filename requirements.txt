@@ -1,0 +1,10 @@
+# PubMed Central Case Report Crawler Dependencies
+# Data Mining Research Project
+# Python 3.8+
+
+# Core dependencies
+requests>=2.31.0
+lxml>=4.9.0
+
+# Optional but recommended for better performance
+pandas>=2.0.0
