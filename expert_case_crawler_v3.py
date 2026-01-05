@@ -328,7 +328,7 @@ class ExpertCaseCrawlerV3:
         
         for idx, disease in enumerate(self.diseases, 1):
             if total_saved >= target:
-                print(f"\n✅ Target reached: {target} cases!")
+                print(f"\nTarget reached: {target} cases!")
                 break
             
             disease_start = time.time()
@@ -412,7 +412,7 @@ if __name__ == "__main__":
     crawler = ExpertCaseCrawlerV3(email="student@university.edu")
     total = crawler.crawl(target=10000, max_per_disease=5000)
     
-    print(f"\n✨ Crawling completed!")
+    print(f"\n Crawling completed!")
     print(f" Total: {total} raw clinical cases with CANCER data included!")
     print(f"\n Next steps:")
     print(f"   import pandas as pd")
