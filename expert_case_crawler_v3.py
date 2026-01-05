@@ -67,7 +67,7 @@ class ExpertCaseCrawlerV3:
         
         self.stats = {'searched': 0, 'found': 0, 'no_pmc': 0, 'no_text': 0, 'saved': 0}
     
-    def search_case_reports(self, disease, max_results=500):
+    def search_case_reports(self, disease, max_results=5000):
         """Search PubMed for case reports - FIXED QUERY"""
         # FIXED: Use simple query - works much better!
         # Strategy: "{disease} case report" finds 10x more results than Publication Type filter
@@ -218,7 +218,7 @@ class ExpertCaseCrawlerV3:
                                 case_data['patient_gender'] = gender
                         
                         if not case_data['chief_complaint']:
-                            case_data['chief_complaint'] = full_section[:500]
+                            case_data['chief_complaint'] = full_section[:5000]
                     
                     if any(kw in section_title for kw in ['symptom', 'sign', 'clinical feature', 'manifestation']):
                         case_data['symptoms_raw'] += ' ' + full_section
@@ -314,7 +314,7 @@ class ExpertCaseCrawlerV3:
                 writer.writeheader()
             writer.writerow(case_data)
     
-    def crawl(self, target=10000, max_per_disease=500):
+    def crawl(self, target=10000, max_per_disease=5000):
         """Main crawl function - OPTIMIZED"""
         print("="*90)
         print(f" Target: {target} raw clinical case reports")
@@ -410,7 +410,7 @@ if __name__ == "__main__":
     print()
     
     crawler = ExpertCaseCrawlerV3(email="student@university.edu")
-    total = crawler.crawl(target=10000, max_per_disease=500)
+    total = crawler.crawl(target=10000, max_per_disease=5000)
     
     print(f"\n✨ Crawling completed!")
     print(f" Total: {total} raw clinical cases with CANCER data included!")
